@@ -11,7 +11,7 @@ for result in results:
     print(result)
 
 # Fetch complete details about the matches
-result = find("http://i.imgur.com/OOFRJvr.gifv", fetch_praw=True)
+results = find("http://i.imgur.com/OOFRJvr.gifv", fetch_praw=True)
 for result in results:
     print(result.url)
     print(result.score)

@@ -5,11 +5,11 @@ import praw
 from functools import lru_cache
 
 from bs4 import BeautifulSoup
-from ratelimit import rate_limited
 
 
 API_URL = "http://karmadecay.com/search"
 reddit = praw.Reddit(client_id="_MyO9rFo5vRsqg", client_secret=None, user_agent="samj1912/KD API")
+
 
 class KDResuts():
 
@@ -20,7 +20,7 @@ class KDResuts():
 
         # Finds all results before the "Less Similar" boundry tag
         self._break_tag = self.soup.find(class_="ls")
-    
+
     def find_submission(self, obj):
         try:
             result = obj.select_one(".title > a").get('href')
@@ -32,10 +32,9 @@ class KDResuts():
 
     def __iter__(self):
         for sibling in self._break_tag.find_all_previous(class_="result"):
-            yield self.find_submission(sibling)      
+            yield self.find_submission(sibling)
 
 
-@rate_limited(1)
 @lru_cache(maxsize=100)
 def find(url, fetch_praw=False):
     """
