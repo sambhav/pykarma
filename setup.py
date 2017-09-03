@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='pykarma',
-      version='1.0',
+      version='1.1',
       description="A python API for Karma Decay",
       url='http://github.com/samj1912/pykarma',
       author='Sambhav Kothari',
