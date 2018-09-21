@@ -15,6 +15,11 @@ results = find("http://i.imgur.com/OOFRJvr.gifv", subreddit="example")
 for result in results:
     print(result)
 
+# Fetch matches within multiple subreddits
+results = find("http://i.imgur.com/OOFRJvr.gifv", subreddit=["example", "bottesting"])
+for result in resultS:
+    print(result)
+
 # Fetch complete details about the matches
 results = find("http://i.imgur.com/OOFRJvr.gifv", fetch_praw=True)
 for result in results:
