@@ -56,7 +56,7 @@ def find(url, subreddit=None, fetch_praw=False):
     }
 
     if subreddit != None:
-        payload = { 'subreddit': subreddit, **payload }
+        payload['subreddit'] = subreddit
 
     headers = {
         'User-agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) KD API Search'
