@@ -56,7 +56,14 @@ def find(url, subreddit=None, fetch_praw=False):
     }
 
     if subreddit != None:
-        payload['subreddit'] = subreddit
+        if isinstance(subreddit, (str, unicode)):
+            payload['subreddit'] = subreddit
+        elif isinstance(subreddit, (list, tuple)):
+            subreddit_string = ""
+            for sub in subreddit:
+                subreddit_string += sub + '|' # Pipe is used by KD to denote multiple subreddits
+            subreddit_string = subreddit_string[:-1] # Remove trailing pipe
+            payload['subreddit'] = subreddit_string
 
     headers = {
         'User-agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) KD API Search'
