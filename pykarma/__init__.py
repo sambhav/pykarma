@@ -36,7 +36,7 @@ class KDResuts():
 
 
 @lru_cache(maxsize=100)
-def find(url, fetch_praw=False):
+def find(url, subreddit=None, fetch_praw=False):
     """
     Searches a URL on Karma Decay and returns a PRAW Submission object.
 
@@ -54,6 +54,12 @@ def find(url, fetch_praw=False):
         'kdtoolver': 'b1',
         'q': url
     }
+
+    if subreddit != None:
+        if isinstance(subreddit, str):
+            subreddit = [subreddit]
+        payload['subreddit'] = '|'.join(subreddit)
+
     headers = {
         'User-agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) KD API Search'
     }
